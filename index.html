@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casamento — [NOME DO NOIVO] & [NOME DA NOIVA]</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #0a1628;
+      --navy-mid: #162544;
+      --navy-light: #1e3a6e;
+      --gold: #c9a84c;
+      --gold-light: #e2c97e;
+      --white: #fdfcf9;
+      --off-white: #f5f2eb;
+      --gray: #8a8a8a;
+      --border: rgba(201, 168, 76, 0.25);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--navy);
+      color: var(--white);
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ─── HERO ─────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 24px;
+      position: relative;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(30,58,110,0.6) 0%, transparent 70%),
+        var(--navy);
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 39px,
+          rgba(201,168,76,0.04) 39px,
+          rgba(201,168,76,0.04) 40px
+        ),
+        repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 39px,
+          rgba(201,168,76,0.04) 39px,
+          rgba(201,168,76,0.04) 40px
+        );
+      pointer-events: none;
+    }
+
+    .hero-ornament {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(60px, 12vw, 120px);
+      color: var(--gold);
+      opacity: 0.08;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Jost', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 28px;
+      animation: fadeUp 1s ease both;
+    }
+
+    .hero-names {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(48px, 10vw, 96px);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 20px;
+      animation: fadeUp 1s 0.15s ease both;
+    }
+
+    .hero-names em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    .hero-ampersand {
+      display: block;
+      font-size: 0.55em;
+      color: var(--gold);
+      opacity: 0.7;
+      line-height: 0.9;
+    }
+
+    .hero-date {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(16px, 3vw, 22px);
+      font-style: italic;
+      color: var(--off-white);
+      opacity: 0.75;
+      margin-bottom: 48px;
+      animation: fadeUp 1s 0.3s ease both;
+    }
+
+    .divider-line {
+      width: 80px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 0 auto 48px;
+      animation: fadeUp 1s 0.45s ease both;
+    }
+
+    .hero-intro {
+      max-width: 560px;
+      font-size: 15px;
+      color: rgba(253,252,249,0.7);
+      line-height: 1.8;
+      animation: fadeUp 1s 0.55s ease both;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0.4;
+      animation: fadeUp 1s 1s ease both;
+    }
+
+    .scroll-hint span {
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    /* ─── SECTIONS ──────────────────────────────────── */
+    section {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
+
+    section + section {
+      border-top: 1px solid var(--border);
+    }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(30px, 5vw, 46px);
+      font-weight: 300;
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+
+    .section-body {
+      font-size: 15px;
+      color: rgba(253,252,249,0.75);
+      line-height: 1.9;
+      margin-bottom: 20px;
+    }
+
+    .section-body strong {
+      color: var(--white);
+      font-weight: 500;
+    }
+
+    /* ─── CARDS ─────────────────────────────────────── */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-top: 32px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 28px;
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .card:hover {
+      background: rgba(201,168,76,0.05);
+      border-color: rgba(201,168,76,0.4);
+    }
+
+    .card-icon {
+      font-size: 22px;
+      margin-bottom: 14px;
+    }
+
+    .card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+
+    .card-text {
+      font-size: 13.5px;
+      color: rgba(253,252,249,0.6);
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+
+    /* ─── BUTTONS / LINKS ────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 24px;
+      font-family: 'Jost', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 1px;
+      transition: all 0.25s;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--navy);
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-light);
+    }
+
+    .btn-outline {
+      border: 1px solid rgba(201,168,76,0.5);
+      color: var(--gold-light);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--gold);
+      background: rgba(201,168,76,0.07);
+    }
+
+    .btn-block {
+      display: flex;
+      justify-content: center;
+      margin-top: 32px;
+    }
+
+    /* ─── LOCAIS ─────────────────────────────────────── */
+    .local-block {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .local-block:last-of-type { border-bottom: none; }
+
+    .local-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 48px;
+      font-weight: 300;
+      color: var(--gold);
+      opacity: 0.25;
+      line-height: 1;
+      min-width: 40px;
+    }
+
+    .local-info {}
+
+    .local-tag {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+
+    .local-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      margin-bottom: 6px;
+    }
+
+    .local-address {
+      font-size: 13.5px;
+      color: rgba(253,252,249,0.55);
+      margin-bottom: 12px;
+    }
+
+    /* ─── CONFIRMAÇÃO ────────────────────────────────── */
+    .confirmacao-box {
+      border: 1px solid var(--border);
+      padding: 40px;
+      margin-top: 32px;
+      position: relative;
+    }
+
+    .confirmacao-box::before {
+      content: '✦';
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--navy);
+      padding: 0 12px;
+      color: var(--gold);
+      font-size: 14px;
+    }
+
+    .notice {
+      background: rgba(201,168,76,0.06);
+      border-left: 2px solid var(--gold);
+      padding: 14px 18px;
+      font-size: 13px;
+      color: rgba(253,252,249,0.65);
+      line-height: 1.7;
+      margin-top: 20px;
+    }
+
+    /* ─── POUSADAS ────────────────────────────────────── */
+    .tip-item.orientacao {
+        grid-template-columns: 48px 1fr;
+        align-items: start;
+        gap: 20px;
+    }
+
+    .tip-item.orientacao .tip-number {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 42px;
+        font-weight: 300;
+        color: var(--gold);
+        opacity: 0.3;
+        line-height: 1;
+        text-align: right;
+    }
+
+    .tip-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: start;
+      gap: 16px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tip-item:last-of-type { border-bottom: none; }
+
+    .tip-category {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+
+    .tip-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 19px;
+      margin-bottom: 4px;
+    }
+
+    .tip-desc {
+      font-size: 13px;
+      color: rgba(253,252,249,0.55);
+    }
+
+    .tip-instructions {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.76);
+    }
+
+    /* ─── PIX ──────────────────────────────────────────── */
+    .pix-box {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border);
+      padding: 40px;
+      text-align: center;
+      margin-top: 32px;
+    }
+
+    .pix-heart {
+      font-size: 32px;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .pix-key {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      color: var(--gold-light);
+      margin: 16px 0 8px;
+      word-break: break-all;
+    }
+
+    .pix-label {
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(253,252,249,0.4);
+      margin-bottom: 24px;
+    }
+
+    /* ─── FOOTER ────────────────────────────────────────── */
+    footer {
+      text-align: center;
+      padding: 60px 24px;
+      border-top: 1px solid var(--border);
+      font-size: 12px;
+      color: rgba(253,252,249,0.3);
+      letter-spacing: 0.1em;
+    }
+
+    footer .footer-names {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      color: rgba(253,252,249,0.5);
+      margin-bottom: 8px;
+    }
+
+    /* ─── NAV ───────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      padding: 18px 24px;
+      background: rgba(10,22,40,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201,168,76,0.1);
+    }
+
+    nav a {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: rgba(253,252,249,0.5);
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: var(--gold-light); }
+
+    /* ─── ANIMATIONS ─────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; transform: scaleY(1); }
+      50% { opacity: 0.8; transform: scaleY(1.2); }
+    }
+
+    /* ─── RESPONSIVE ──────────────────────────────────── */
+    @media (max-width: 600px) {
+      nav { gap: 16px; }
+      nav a { font-size: 10px; letter-spacing: 0.12em; }
+      .confirmacao-box { padding: 24px 20px; }
+      .pix-box { padding: 28px 20px; }
+      .local-block { flex-direction: column; gap: 8px; }
+      .local-number { font-size: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#cerimonia">Cerimônia</a>
+    <a href="#confirmacao">Confirmação</a>
+    <a href="#dicas">Dicas</a>
+    <a href="#presente">Presente</a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-eyebrow">Você está convidado(a) para a cerimônia de casamento de</div>
+
+    <h1 class="hero-names">
+        <em>Josilene Ribeiro</em>
+        <span class="hero-ampersand">&amp;</span>
+        <em>Jackson Oliveira</em>
+    </h1>
+
+    <p class="hero-date">Sábado · 29 de agosto de 2026</p>
+
+    <div class="divider-line"></div>
+
+    <p class="hero-intro">
+      <!-- ✏️ Escreva uma mensagem de boas-vindas aqui -->
+      Com muita alegria, compartilhamos os detalhes do nosso casamento.
+      Nesta página você encontra tudo o que precisa saber para o grande dia.
+    </p>
+
+    <div class="scroll-hint">
+      <div class="scroll-line"></div>
+    </div>
+  </div>
+
+  <!-- CERIMÔNIA E RECEPÇÃO -->
+  <section id="cerimonia">
+    <div class="section-label">O Grande Dia</div>
+    <h2 class="section-title">Cerimônia</h2>
+    <p class="section-body">
+      Pedimos para que os convidados cheguem com pelo menos
+      <strong>30 minutos de antecedência</strong> para acomodação.
+    </p>
+
+    <div class="local-block">
+      <div class="local-info">
+        <div class="local-tag">Cerimônia</div>
+        <div class="local-name">Igreja de São José</div>
+        <div class="local-address">
+          Rua Francisca Camilo · Barra · Fortim, CE<br>
+          <!-- ✏️ Horário da cerimônia -->
+          Horário: 10:00
+        </div>
+        <!-- ✏️ Substitua # pelo link do Google Maps do local -->
+        <a href="https://www.google.com/maps/place/4%C2%B025'48.5%22S+37%C2%B046'43.5%22W/@-4.430149,-37.778741,1124m/data=!3m2!1e3!4b1!4m4!3m3!8m2!3d-4.430149!4d-37.778741?entry=ttu&g_ep=EgoyMDI2MDQyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn btn-outline">
+          Ver no mapa
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ORIENTAÇÕES AOS CONVIDADOS -->
+  <section id="dicas">
+    <div class="section-label">Leitura importante</div>
+    <h2 class="section-title">Orientações para a Cerimônia</h2>
+    <p class="section-body">
+      <!-- ✏️ Mensagem de boas-vindas para convidados de fora -->
+      Por favor, pedimos que leiam com atenção as instruções abaixo. São de grande importância para a organização deste evento.
+    </p>
+    
+    <div class="tip-item orientacao">
+      <div class="local-number">1</div>
+      <div>
+          <div class="tip-name">Confirme sua presença</div>
+          <div class="tip-instructions">É de fundamental importância para a organização do evento que confirme sua presença e se estará sozinho(a) ou acompanhado(a).</div>
+        </div>
+    </div>
+    
+    <div class="tip-item orientacao">
+      <div class="local-number">2</div>
+      <div>
+        <div class="tip-name">Convidado não convida</div>
+        <div class="tip-instructions">É escolha dos noivos quem deve estar neste momento especial. Será um evento simples, por isso é importante que nele estejam apenas pessoas que escolhemos.</div>
+      </div>
+    </div>
+
+    <div class="tip-item orientacao">
+        <div class="local-number">3</div>
+        <div>
+            <div class="tip-name">Não se atrase</div>
+            <div class="tip-instructions">Pedimos para que chegue com 30 minutos de antecedência para a condução da cerimônia.</div>
+        </div>
+    </div>
+
+    <div class="tip-item orientacao">
+      <div class="local-number">4</div>
+      <div>
+        <div class="tip-name">Evite comentários negativos</div>
+        <div class="tip-instructions">Como já foi descrito, será um evento simples e seu principal objetivo é o Sacramento do Matrimônio.</div>
+      </div>
+    </div>
+
+    <div class="tip-item orientacao">
+    <div class="local-number">5</div>
+      <div>
+        <div class="tip-name">Branco é a cor da noiva.</div>
+        <div class="tip-instructions">Nem precisamos comentar, né?</div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- CONFIRMAÇÃO DE PRESENÇA -->
+  <section id="confirmacao">
+    <div class="section-label">Confirmação</div>
+    <h2 class="section-title">Confirme sua Presença</h2>
+    <p class="section-body">
+      Para nos ajudar na organização, pedimos que você confirme presença
+      <!-- ✏️ Prazo para confirmação -->
+      até o dia <strong>02/06/2026</strong>.
+      Basta clicar no botão abaixo e preencher o formulário rapidinho.
+    </p>
+
+    <div class="confirmacao-box">
+      <p class="section-body" style="text-align:center; margin-bottom:24px;">
+        O formulário pergunta se você irá <strong>sozinho(a)</strong> ou
+        se <strong>levará acompanhante</strong>. Reserve um minutinho para responder. 💙
+      </p>
+
+      <!-- ✏️ Substitua # pelo link do seu Google Forms -->
+      <div class="btn-block">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfS2loNTet3cg4qsa_LXcS8qJwlMXZDC51qiU333DXeGQPDoQ/viewform?usp=sharing&ouid=109384180663114345734" target="_blank" class="btn btn-primary">
+          ✔ Confirmar Presença
+        </a>
+      </div>
+
+      <div class="notice">
+        ⚠️ Se você não recebeu este link diretamente de um dos noivos, por favor não responda ao formulário.
+        O acesso à lista é restrito aos nossos convidados. Obrigado pela compreensão!
+      </div>
+    </div>
+  </section>
+
+  <!-- DICAS DE HOSPEDAGEM E RESTAURANTES -->
+  <section id="dicas">
+    <div class="section-label">Para quem vem de longe</div>
+    <h2 class="section-title">Onde Ficar & O Que Fazer</h2>
+    <p class="section-body">
+      <!-- ✏️ Mensagem de boas-vindas para convidados de fora -->
+      Se você vai aproveitar para explorar a cidade, selecionamos algumas opções de pousadas
+      e restaurantes que recomendamos. Os links levam aos contatos ou opções de agendamento.
+    </p>
+
+    <!-- ✏️ Repita o bloco .tip-item quantas vezes quiser -->
+
+    <div class="tip-item">
+      <div>
+        <div class="tip-category">Hotel</div>
+        <div class="tip-name">Pausa</div>
+        <div class="tip-desc">Praia do Pontal de Maceió</div>
+      </div>
+      <a href="https://www.booking.com/hotel/br/pausa.pt-br.html?label=New_Portuguese_PT_ROW_6409090206-_9oPl604g33uUPimd0_L7QS217921514283%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg&sid=372645f340ab61ec5e76e593fa68c083&gclid=CjwKCAjwntHPBhAaEiwA_Xp6RjxNI4jsyW3prSlV2u2i6oWlTyTkQYIlP0PpIyfMazy_Qn3OgSf-fBoCQy0QAvD_BwE&aid=360920&ucfs=1&arphpl=1&dest_id=-643694&dest_type=city&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=1&hapos=1&sr_order=popularity&srpvid=797c0d47b66c1221&srepoch=1777686849&from=searchresults" target="_blank" class="btn btn-outline" style="white-space:nowrap; margin-top:4px;">Ver</a>
+    </div>
+
+    <div class="tip-item">
+      <div>
+        <div class="tip-category">Pousada</div>
+        <div class="tip-name">Pousada da Eva</div>
+        <div class="tip-desc">R. Nossa Sra. Amparo, 438 - Centro</div>
+      </div>
+      <a href="https://www.google.com/maps/place/Pousada+da+Eva/@-4.4504484,-37.7989965,1124m/data=!3m1!1e3!4m10!3m9!1s0x7b84ffc98b2ee17:0x200f69696c03e644!5m3!1s2026-05-03!4m1!1i2!8m2!3d-4.4504538!4d-37.7941256!16s%2Fg%2F11kcm862jm?entry=ttu&g_ep=EgoyMDI2MDQyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn btn-outline" style="white-space:nowrap; margin-top:4px;">Ver</a>
+    </div>
+
+
+    <div class="tip-item">
+      <div>
+        <div class="tip-category">Pousada</div>
+        <div class="tip-name">Casa da Juma</div>
+        <div class="tip-desc">Rua Ernestina Pereira, 140 - Maceió</div>
+      </div>
+      <a href="https://www.booking.com/hotel/br/casa-da-juma.pt-br.html?label=New_Portuguese_PT_ROW_6409090206-_9oPl604g33uUPimd0_L7QS217921514283%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg&sid=372645f340ab61ec5e76e593fa68c083&gclid=CjwKCAjwntHPBhAaEiwA_Xp6RjxNI4jsyW3prSlV2u2i6oWlTyTkQYIlP0PpIyfMazy_Qn3OgSf-fBoCQy0QAvD_BwE&aid=360920&ucfs=1&arphpl=1&dest_id=-643694&dest_type=city&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=8&hapos=8&sr_order=popularity&srpvid=797c0d47b66c1221&srepoch=1777686895&from=searchresults" target="_blank" class="btn btn-outline" style="white-space:nowrap; margin-top:4px;">Ver</a>
+    </div>
+
+    <div class="tip-item">
+      <div>
+        <div class="tip-category">Pousada</div>
+        <div class="tip-name">Chalés da Cris</div>
+        <div class="tip-desc">Córrego do Maceió, 1005</div>
+      </div>
+      <a href="https://www.booking.com/hotel/br/chales-da-cris.pt-br.html?label=New_Portuguese_PT_ROW_6409090206-_9oPl604g33uUPimd0_L7QS217921514283%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg&sid=372645f340ab61ec5e76e593fa68c083&aid=360920&ucfs=1&arphpl=1&dest_id=6737824&dest_type=hotel&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=1&hapos=1&sr_order=popularity&srpvid=7cf90ddeb2800a94&srepoch=1777687150&from=searchresults" target="_blank" class="btn btn-outline" style="white-space:nowrap; margin-top:4px;">Ver</a>
+    </div>
+
+    <div class="tip-item">
+      <div>
+        <div class="tip-category">Pousada</div>
+        <div class="tip-name">Brisa do Pontal</div>
+        <div class="tip-desc">Rua João Braga Monteiro, 123 - Pontal do Maceió</div>
+      </div>
+      <a href="https://www.booking.com/hotel/br/pousada-brisa-do-pontal.pt-br.html?label=New_Portuguese_PT_ROW_6409090206-_9oPl604g33uUPimd0_L7QS217921514283%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg&sid=372645f340ab61ec5e76e593fa68c083&gclid=CjwKCAjwntHPBhAaEiwA_Xp6Ru27XCTyJPmQ80pATsGCE9NNBYMTf0DExtINj9EHkQ6X9sZIbH3aTBoCqAkQAvD_BwE&aid=360920&ucfs=1&arphpl=1&dest_id=-643694&dest_type=city&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=1&hapos=1&sr_order=popularity&srpvid=e1380f117dcf0590&srepoch=1777687764&from=searchresults" target="_blank" class="btn btn-outline" style="white-space:nowrap; margin-top:4px;">Ver</a>
+    </div>
+
+    <div class="tip-item">
+      <div>
+        <div class="tip-category">Restaurante</div>
+        <div class="tip-name">Barraca Canto Verde</div>
+        <div class="tip-desc">Praia Pontal de Maceió</div>
+      </div>
+      <a href="https://www.google.com/maps/place/Barraca+Canto+Verde/@-4.4014072,-37.7834808,1124m/data=!3m2!1e3!4b1!4m10!3m9!1s0x7b84f8e7e6e1b3b:0x4f589fbe974aeb4b!5m3!1s2026-05-03!4m1!1i2!8m2!3d-4.4014126!4d-37.7809059!16s%2Fg%2F11c0rhhbyj?entry=ttu&g_ep=EgoyMDI2MDQyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn btn-outline" style="white-space:nowrap; margin-top:4px;">Ver</a>
+    </div>
+
+    <div class="tip-item">
+      <div>
+        <div class="tip-category">Restaurante & Pizzaria</div>
+        <div class="tip-name">Vila Caiçara</div>
+        <div class="tip-desc">Av. 27 de Maio, N° 677 - Pontal de Maceió</div>
+      </div>
+      <a href="https://www.google.com/maps/place/Vila+Cai%C3%A7ara+Pizzaria+%26+Restaurante/@-4.4079799,-37.7842774,1124m/data=!3m2!1e3!4b1!4m10!3m9!1s0x7b84f8e6df8b8e5:0x700baccfd034489b!5m3!1s2026-05-03!4m1!1i2!8m2!3d-4.4079853!4d-37.7817025!16s%2Fg%2F11dz57mwdg?entry=ttu&g_ep=EgoyMDI2MDQyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn btn-outline" style="white-space:nowrap; margin-top:4px;">Ver</a>
+    </div>
+
+    <div class="tip-item">
+      <div>
+        <div class="tip-category">Pub</div>
+        <div class="tip-name">Pausa Beach Club</div>
+        <div class="tip-desc">Av. 27 de Maio - Pontal de Maceió</div>
+      </div>
+      <a href="https://www.google.com/maps/place/Pausa+Beach+Club/@-4.4019095,-37.7840603,1124m/data=!3m2!1e3!4b1!4m10!3m9!1s0x7b84f006021815f:0xd9c219642f61d6c0!5m3!1s2026-05-03!4m1!1i2!8m2!3d-4.4019149!4d-37.7814854!16s%2Fg%2F11vk4mbtd5?entry=ttu&g_ep=EgoyMDI2MDQyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn btn-outline" style="white-space:nowrap; margin-top:4px;">Ver</a>
+    </div>
+
+    <div class="tip-item">
+      <div>
+        <div class="tip-category">Passeio de barco</div>
+        <div class="tip-name">Estrela do Jaguaribe</div>
+        <div class="tip-desc">Canto Da Barra</div>
+      </div>
+      <a href="https://www.google.com/maps/place/Passeios+de+barco+Estrela+do+Jaguaribe/@-4.4251818,-37.7760252,281m/data=!3m2!1e3!4b1!4m6!3m5!1s0x7b84f5ff34e3035:0xfe877918a6407697!8m2!3d-4.4251831!4d-37.7753815!16s%2Fg%2F11w1wcqh0w?entry=ttu&g_ep=EgoyMDI2MDQyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn btn-outline" style="white-space:nowrap; margin-top:4px;">Ver</a>
+    </div>
+
+    <div class="tip-item">
+      <div>
+        <div class="tip-category">Passeio de Buggy</div>
+        <div class="tip-name">Fortim Yellow Beach</div>
+        <div class="tip-desc">Instagram: @fortimyellowbeach</div>
+      </div>
+      <a href="https://www.instagram.com/fortimyellowbeach?igsh=MW5pZnkxdmVrb3cyYw==" target="_blank" class="btn btn-outline" style="white-space:nowrap; margin-top:4px;">Ver</a>
+    </div>
+  </section>
+
+  <!-- PRESENTE / PIX -->
+  <section id="presente">
+    <div class="section-label">Presente</div>
+    <h2 class="section-title">Quer nos dar um Presente?</h2>
+    <p class="section-body">
+      Se você quiser nos presentear de alguma forma,
+      a contribuição financeira nos ajuda muito a construir
+      nossa vida juntos. Não pense que é uma obrigação muito menos critério para participar desse momento.
+      É apenas uma ajuda para nosso lar e dia-a-dia. Qualquer valor é recebido com muito amor e gratidão. 💙
+    </p>
+
+    <div class="pix-box">
+
+      <p style="font-size:13px; color:rgba(253,252,249,0.55); margin-bottom:8px;">Chave Pix</p>
+
+      <div class="pix-key" id="pix-key">744dd77d-5a95-4160-850b-0ddbd9ce6a46</div>
+      <div class="pix-label">Chave aleatória</div>
+
+      <button class="btn btn-outline" onclick="copiarPix()" id="btn-copiar" style="margin-bottom:24px;">
+        📋 Copiar chave Pix
+      </button>
+
+      <p style="font-size:13px; color:rgba(253,252,249,0.55); max-width:400px; margin:0 auto 24px;">
+        <!-- ✏️ Instruções de como fazer o Pix -->
+        Abra o app do seu banco → Pix → Transferir → Cole a chave acima.
+        O beneficiário estará no nome de <strong>Jackson de Oliveira Pereira, banco Mercado Pago</strong>.
+      </p>
+
+      <!-- ✏️ Se tiver um link de pagamento (Mercado Pago, PagBank etc.), cole aqui -->
+      <!-- <a href="#" target="_blank" class="btn btn-primary">💳 Link de pagamento</a> -->
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-names">Josilene Ribeiro &amp; Jackson Oliveira</div>
+    <p>Feito com muito amor</p>
+  </footer>
+
+  <script>
+  function copiarPix() {
+      const chave = document.getElementById('pix-key').innerText;
+      navigator.clipboard.writeText(chave).then(() => {
+      const btn = document.getElementById('btn-copiar');
+      btn.textContent = '✔ Chave copiada!';
+      setTimeout(() => btn.textContent = '📋 Copiar chave Pix', 2500);
+      });
+  }
+  </script>
+
+</body>
+</html>
