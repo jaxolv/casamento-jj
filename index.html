@@ -524,6 +524,7 @@
   <!-- NAV -->
   <nav>
     <a href="#cerimonia">Cerimônia</a>
+    <a href="#orientacoes">Orientações</a>
     <a href="#confirmacao">Confirmação</a>
     <a href="#dicas">Dicas</a>
     <a href="#presente">Presente</a>
@@ -569,10 +570,8 @@
         <div class="local-name">Igreja de São José</div>
         <div class="local-address">
           Rua Francisca Camilo · Barra · Fortim, CE<br>
-          <!-- ✏️ Horário da cerimônia -->
           Horário: 10:00
         </div>
-        <!-- ✏️ Substitua # pelo link do Google Maps do local -->
         <a href="https://www.google.com/maps/place/4%C2%B025'48.5%22S+37%C2%B046'43.5%22W/@-4.430149,-37.778741,1124m/data=!3m2!1e3!4b1!4m4!3m3!8m2!3d-4.430149!4d-37.778741?entry=ttu&g_ep=EgoyMDI2MDQyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn btn-outline">
           Ver no mapa
         </a>
@@ -580,12 +579,10 @@
     </div>
   </section>
 
-  <!-- ORIENTAÇÕES AOS CONVIDADOS -->
-  <section id="dicas">
+  <section id="orientacoes">
     <div class="section-label">Leitura importante</div>
     <h2 class="section-title">Orientações para a Cerimônia</h2>
     <p class="section-body">
-      <!-- ✏️ Mensagem de boas-vindas para convidados de fora -->
       Por favor, pedimos que leiam com atenção as instruções abaixo. São de grande importância para a organização deste evento.
     </p>
     
@@ -789,31 +786,29 @@
       </button>
 
       <p style="font-size:13px; color:rgba(253,252,249,0.55); max-width:400px; margin:0 auto 24px;">
-        <!-- ✏️ Instruções de como fazer o Pix -->
         Abra o app do seu banco → Pix → Transferir → Cole a chave acima.
         O beneficiário estará no nome de <strong>Jackson de Oliveira Pereira, banco Mercado Pago</strong>.
       </p>
 
-      <!-- ✏️ Se tiver um link de pagamento (Mercado Pago, PagBank etc.), cole aqui -->
-      <!-- <a href="#" target="_blank" class="btn btn-primary">💳 Link de pagamento</a> -->
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
+    <p>29 de agosto de 2026</p>
     <div class="footer-names">Josilene Ribeiro &amp; Jackson Oliveira</div>
     <p>Feito com muito amor</p>
   </footer>
 
   <script>
-  function copiarPix() {
-      const chave = document.getElementById('pix-key').innerText;
-      navigator.clipboard.writeText(chave).then(() => {
-      const btn = document.getElementById('btn-copiar');
-      btn.textContent = '✔ Chave copiada!';
-      setTimeout(() => btn.textContent = '📋 Copiar chave Pix', 2500);
-      });
-  }
+    function copiarPix() {
+        const chave = document.getElementById('pix-key').innerText;
+        navigator.clipboard.writeText(chave).then(() => {
+        const btn = document.getElementById('btn-copiar');
+        btn.textContent = '✔ Chave copiada!';
+        setTimeout(() => btn.textContent = '📋 Copiar chave Pix', 2500);
+        });
+    }
   </script>
 
 </body>
